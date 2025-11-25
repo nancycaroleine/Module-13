@@ -26,15 +26,37 @@ To write a Python program to evaluate a user-given Prefix expression using a sta
 ---
 
 ### PROGRAM
-
 ```
-
-
+OPERATORS = set(['*', '-', '+', '%', '/', '**']) 
+def evaluate(expression):
+    stack = []
+    for symbol in reversed(expression):
+        if symbol not in OPERATORS:
+            stack.append(int(symbol))  
+        else:
+            operand1 = stack.pop()
+            operand2 = stack.pop()
+            if symbol == '+':
+                stack.append(operand1 + operand2)
+            elif symbol == '-':
+                stack.append(operand1 - operand2)
+            elif symbol == '*':
+                stack.append(operand1 * operand2)
+            elif symbol == '/':
+                stack.append(operand1 // operand2) 
+            elif symbol == '%':
+                stack.append(operand1 % operand2)
+            elif symbol == '**':
+                stack.append(operand1 ** operand2)
+    return stack.pop()
+test_expression = input()
+print("Prefix Expression :", test_expression)
+print("Evaluation result :", evaluate(test_expression))
 ```
-
-
 ### OUTPUT
 
-
+<img width="825" height="260" alt="Screenshot 2025-09-10 082432" src="https://github.com/user-attachments/assets/8bdd1b38-8513-4aaf-b6eb-738d1af5d5ee" />
 
 ### RESULT
+
+Thus, the python code is written and executed successfully.
