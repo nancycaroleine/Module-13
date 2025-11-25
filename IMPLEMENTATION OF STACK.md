@@ -25,7 +25,30 @@ To write a Python program to implement a stack using a list and its built-in met
 ---
 
 ### PROGRAM
-
 ```
-
+OPERATORS=set(['*','+']) 
+def evaluate_postfix(expression):
+    stack=[]
+    for i in expression:
+        if i not in OPERATORS:
+            stack.append(i)
+        else:
+            a = stack.pop()
+            b = stack.pop()
+            if i == '+':
+                res = int(b)+int(a)
+            elif i == '*':
+                res = int(b) * int(a)
+            stack.append(res)
+    return stack[0]        
+expression = input()
+print("postfix expression: ", expression)
+print("Evaluation result: ", evaluate_postfix(expression))
 ```
+### OUTPUT
+
+<img width="821" height="193" alt="image" src="https://github.com/user-attachments/assets/5490b252-5743-4988-9207-1067061e3b5b" />
+
+### RESULT
+
+Thus, the python code is written and executed successfully.
