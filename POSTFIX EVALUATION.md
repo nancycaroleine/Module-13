@@ -30,14 +30,52 @@ To write a Python program to evaluate a user-given Postfix expression that conta
 ---
 
 ### PROGRAM
-
 ```
+OPERATORS=set(['*','+','/'])
+
+def string_conv(str):
+    l=[]
+    for i in range(0,len(str)):
+        if(str[i].isdigit() and str[i+1].isdigit()):
+            st=str[i]+str[i+1]
+            l.append(st)
+        elif(str[i] in OPERATORS):
+            l.append(str[i])
+    
+    return l;
 
 
+
+def evaluate_postfix(expression):
+    exp=string_conv(expression)
+    stack=[]
+    for i in exp:
+        if i not in OPERATORS:
+            stack.append(i)  
+        
+        else:
+            a=stack.pop()  
+            b=stack.pop()
+        
+            if i=='+':
+                res=int(b)+int(a)  
+              
+            elif i=='*':
+                res=int(b)*int(a)
+            
+            elif i=='/':
+                res=int(b)/int(a)
+            
+            stack.append(res) 
+    return stack[0]
+expression = input()
+print('postfix expression: ',expression)
+print('Evaluation result: ',evaluate_postfix(expression))
 ```
-
 ### OUTPUT
 
+<img width="577" height="150" alt="image" src="https://github.com/user-attachments/assets/b96d4785-26c0-4ee1-be93-75dd5158dfe8" />
 
 ### RESULT
 
+Thus, the python code is written and executed successfully.
